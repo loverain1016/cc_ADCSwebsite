@@ -145,7 +145,7 @@ function showRegister() {
     window.history.replaceState({}, '', 'auth.html?mode=register');
 }
 
-function showSuccess() {
+function showSuccessMessage() {
     document.getElementById('login-form').classList.remove('active');
     document.getElementById('register-form').classList.remove('active');
     document.getElementById('success-message').classList.add('active');
@@ -426,7 +426,10 @@ async function simulateLogin(email, password) {
 async function handleRegister(e) {
     e.preventDefault();
     
+    console.log('註冊表單提交開始');
+    
     if (!validateForm('registerForm')) {
+        console.log('表單驗證失敗');
         return;
     }
 
@@ -437,16 +440,19 @@ async function handleRegister(e) {
         email: formData.get('email'),
         password: formData.get('password'),
         name: formData.get('name'),
-        phone: formData.get('phone'),
-        occupation: formData.get('occupation'),
-        company: formData.get('company'),
+        phone: formData.get('phone') || '',
+        occupation: formData.get('occupation') || '',
+        company: formData.get('company') || '',
         subscribeNewsletter: formData.get('subscribeNewsletter') === 'on'
     };
+
+    console.log('使用者資料:', userData);
 
     setButtonLoading('registerForm', true);
 
     try {
         if (supabase) {
+            console.log('使用 Supabase 註冊');
             // 使用 Supabase 註冊
             const { data, error } = await supabase.auth.signUp({
                 email: userData.email,
@@ -474,12 +480,14 @@ async function handleRegister(e) {
             }
 
         } else {
+            console.log('使用演示模式註冊');
             // 模擬註冊（開發模式）
             await simulateRegister(userData);
         }
 
         // 註冊成功
-        showSuccess();
+        console.log('註冊成功，顯示成功訊息');
+        showSuccessMessage();
         
     } catch (error) {
         console.error('Registration error:', error);
