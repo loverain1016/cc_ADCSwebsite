@@ -239,7 +239,8 @@
         <p>處理中，請稍候...</p>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Supabase CDN (可選，如果載入失敗會使用演示模式) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onerror="console.log('Supabase CDN failed, using demo mode')"></script>
     <script src="auth.js"></script>
 </body>
 </html>

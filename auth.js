@@ -19,7 +19,7 @@ const SUPABASE_CONFIG = {
 
 // 初始化 Supabase（如果設定正確）
 let supabase = null;
-if (SUPABASE_CONFIG.url !== 'YOUR_SUPABASE_URL') {
+if (typeof window !== 'undefined' && window.supabase && SUPABASE_CONFIG.url !== 'YOUR_SUPABASE_URL') {
     supabase = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
 }
 
@@ -30,10 +30,17 @@ let currentAuthMode = 'login';
 
 // DOM 載入完成後初始化
 document.addEventListener('DOMContentLoaded', function() {
-    initializeAuthPage();
-    initializeFormValidation();
-    initializeEventListeners();
-    checkAuthStatus();
+    try {
+        console.log('DOM 載入完成，開始初始化');
+        initializeAuthPage();
+        initializeFormValidation();
+        initializeEventListeners();
+        checkAuthStatus();
+        console.log('初始化完成');
+    } catch (error) {
+        console.error('初始化錯誤:', error);
+        showMessage('頁面初始化失敗，請重新整理頁面', 'error');
+    }
 });
 
 // ================================
@@ -52,18 +59,21 @@ function initializeAuthPage() {
 }
 
 function initializeEventListeners() {
-    // 表單切換
-    document.querySelectorAll('.auth-switch').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = this.dataset.target;
-            if (target === 'register') {
-                showRegister();
-            } else {
-                showLogin();
-            }
+    try {
+        console.log('開始設定事件監聽器');
+        
+        // 表單切換
+        document.querySelectorAll('.auth-switch').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = this.dataset.target;
+                if (target === 'register') {
+                    showRegister();
+                } else {
+                    showLogin();
+                }
+            });
         });
-    });
 
     // 導覽列切換按鈕
     const authToggle = document.querySelector('.auth-toggle');
@@ -112,6 +122,12 @@ function initializeEventListeners() {
 
     // 服務條款模態框
     initializeModal();
+    
+    console.log('事件監聽器設定完成');
+    } catch (error) {
+        console.error('設定事件監聽器時發生錯誤:', error);
+        showMessage('功能初始化失敗，請重新整理頁面', 'error');
+    }
 }
 
 // ================================
