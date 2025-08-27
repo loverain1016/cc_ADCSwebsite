@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員登入 | MDVTA 中華多元職能交流發展協會</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">MDVTA</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">返回首頁</a></li>
+                <li><a href="#" class="auth-toggle">註冊</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Auth Container -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <!-- Login Form -->
+                <div id="login-form" class="auth-form active">
+                    <div class="auth-header">
+                        <h2>會員登入</h2>
+                        <p>歡迎回到 MDVTA！請登入您的帳號</p>
+                    </div>
+
+                    <form class="form" id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">電子郵件</label>
+                            <input type="email" id="loginEmail" name="email" required 
+                                   placeholder="請輸入您的電子郵件">
+                            <span class="error-message" id="loginEmailError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">密碼</label>
+                            <div class="password-input">
+                                <input type="password" id="loginPassword" name="password" required 
+                                       placeholder="請輸入您的密碼">
+                                <button type="button" class="password-toggle" data-target="loginPassword">
+                                    👁️
+                                </button>
+                            </div>
+                            <span class="error-message" id="loginPasswordError"></span>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="rememberMe" name="remember">
+                                <span class="checkmark"></span>
+                                記住我
+                            </label>
+                            <a href="#" class="forgot-password">忘記密碼？</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span class="btn-text">登入</span>
+                            <span class="btn-loading" style="display: none;">登入中...</span>
+                        </button>
+
+                        <div class="auth-footer">
+                            <p>還不是會員嗎？ <a href="#" class="auth-switch" data-target="register">立即註冊</a></p>
+                        </div>
+                    </form>
+
+                    <!-- Social Login (Optional) -->
+                    <div class="social-login">
+                        <div class="divider">
+                            <span>或</span>
+                        </div>
+                        <button type="button" class="btn btn-outline social-btn">
+                            <span>📧</span>
+                            使用 Google 登入
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form" class="auth-form">
+                    <div class="auth-header">
+                        <h2>會員註冊</h2>
+                        <p>加入 MDVTA，開啟您的學習旅程</p>
+                    </div>
+
+                    <form class="form" id="registerForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="registerName">姓名 *</label>
+                                <input type="text" id="registerName" name="name" required 
+                                       placeholder="請輸入您的真實姓名">
+                                <span class="error-message" id="registerNameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerPhone">電話</label>
+                                <input type="tel" id="registerPhone" name="phone" 
+                                       placeholder="請輸入您的電話號碼">
+                                <span class="error-message" id="registerPhoneError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerEmail">電子郵件 *</label>
+                            <input type="email" id="registerEmail" name="email" required 
+                                   placeholder="請輸入您的電子郵件">
+                            <span class="error-message" id="registerEmailError"></span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="registerPassword">密碼 *</label>
+                                <div class="password-input">
+                                    <input type="password" id="registerPassword" name="password" required 
+                                           placeholder="至少 8 個字元">
+                                    <button type="button" class="password-toggle" data-target="registerPassword">
+                                        👁️
+                                    </button>
+                                </div>
+                                <div class="password-strength" id="passwordStrength"></div>
+                                <span class="error-message" id="registerPasswordError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">確認密碼 *</label>
+                                <div class="password-input">
+                                    <input type="password" id="confirmPassword" name="confirmPassword" required 
+                                           placeholder="請再次輸入密碼">
+                                    <button type="button" class="password-toggle" data-target="confirmPassword">
+                                        👁️
+                                    </button>
+                                </div>
+                                <span class="error-message" id="confirmPasswordError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="occupation">職業</label>
+                                <select id="occupation" name="occupation">
+                                    <option value="">請選擇職業</option>
+                                    <option value="student">學生</option>
+                                    <option value="employee">上班族</option>
+                                    <option value="manager">主管</option>
+                                    <option value="entrepreneur">創業者</option>
+                                    <option value="freelancer">自由工作者</option>
+                                    <option value="retired">退休</option>
+                                    <option value="other">其他</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">公司/組織</label>
+                                <input type="text" id="company" name="company" 
+                                       placeholder="請輸入公司或組織名稱">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                                <span class="checkmark"></span>
+                                我已閱讀並同意 <a href="#" class="terms-link">服務條款</a> 和 <a href="#" class="privacy-link">隱私政策</a>
+                            </label>
+                            <span class="error-message" id="agreeTermsError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="subscribeNewsletter" name="subscribeNewsletter" checked>
+                                <span class="checkmark"></span>
+                                我願意接收 MDVTA 的最新課程資訊與電子報
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span class="btn-text">立即註冊</span>
+                            <span class="btn-loading" style="display: none;">註冊中...</span>
+                        </button>
+
+                        <div class="auth-footer">
+                            <p>已經是會員了？ <a href="#" class="auth-switch" data-target="login">立即登入</a></p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Success Message -->
+                <div id="success-message" class="auth-form success-form">
+                    <div class="success-icon">✅</div>
+                    <h2>註冊成功！</h2>
+                    <p>歡迎加入 MDVTA！我們已發送驗證郵件到您的信箱，請點擊郵件中的連結完成帳號驗證。</p>
+                    <div class="success-actions">
+                        <button class="btn btn-primary" onclick="showLogin()">立即登入</button>
+                        <a href="index.html" class="btn btn-outline">返回首頁</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Modal (簡化版) -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>服務條款</h3>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>1. 服務內容</h4>
+                <p>MDVTA 提供多元職能交流與發展相關的課程、活動與服務。</p>
+                
+                <h4>2. 會員權利與義務</h4>
+                <p>會員享有參與課程、活動的權利，並應遵守相關規範。</p>
+                
+                <h4>3. 隱私保護</h4>
+                <p>我們承諾保護您的個人資料，詳細內容請參閱隱私政策。</p>
+                
+                <h4>4. 免責聲明</h4>
+                <p>本協會對於課程內容與效果不提供任何明示或暗示的保證。</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary modal-close">我了解</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>處理中，請稍候...</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

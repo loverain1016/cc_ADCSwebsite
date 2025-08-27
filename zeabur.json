@@ -1,0 +1,17 @@
+{
+  "$schema": "https://zeabur.com/schema.json",
+  "name": "MDVTA Website",
+  "services": [
+    {
+      "name": "mdvta-frontend",
+      "type": "static",
+      "buildCommand": "echo 'No build required'",
+      "outputDirectory": ".",
+      "environmentVariables": {
+        "NODE_ENV": "production"
+      },
+      "domains": [],
+      "regions": ["hkg1"]
+    }
+  ]
+}

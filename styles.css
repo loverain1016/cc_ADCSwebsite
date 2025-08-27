@@ -209,6 +209,20 @@ img {
     color: var(--primary-color);
 }
 
+.nav-auth {
+    background-color: var(--primary-color) !important;
+    color: var(--white) !important;
+    padding: var(--spacing-xs) var(--spacing-md) !important;
+    border-radius: var(--border-radius-sm) !important;
+    transition: all 0.3s ease !important;
+}
+
+.nav-auth:hover {
+    background-color: var(--primary-dark) !important;
+    color: var(--white) !important;
+    transform: translateY(-2px);
+}
+
 /* Hero Section */
 .hero-section {
     position: relative;

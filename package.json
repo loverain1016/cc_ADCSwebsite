@@ -1,0 +1,36 @@
+{
+  "name": "mdvta-website",
+  "version": "1.0.0",
+  "description": "中華多元職能交流發展協會官方網站",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo 'Static website ready for deployment'",
+    "build": "echo 'No build process required for static site'",
+    "dev": "echo 'Open index.html in browser for development'"
+  },
+  "keywords": [
+    "mdvta",
+    "association",
+    "education",
+    "taiwan",
+    "professional-development",
+    "ai-application",
+    "health-promotion",
+    "sustainability"
+  ],
+  "author": "MDVTA",
+  "license": "MIT",
+  "homepage": "https://loverain1016.github.io/cc_ADCSwebsite/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loverain1016/cc_ADCSwebsite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/loverain1016/cc_ADCSwebsite/issues"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
