@@ -5,23 +5,13 @@
       <meta name="viewport" content="width=device-width, 
   initial-scale=1.0">
       <title>中華多元職能交流發展協會 | ADCS</title>
-      <meta name="description" 
-  content="致力於AI應用、腦健康促進、永續發展與工作生活平衡的專業協會">    
-      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC    
-  :wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">        
       <style>
-          * {
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-          }
+          * { margin: 0; padding: 0; box-sizing: border-box; }
 
           body {
-              font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial,    
-   sans-serif;
+              font-family: 'Microsoft JhengHei', Arial, sans-serif;        
               line-height: 1.6;
               color: #333;
-              overflow-x: hidden;
           }
 
           .container {
@@ -33,13 +23,12 @@
           /* 導覽列 */
           .navbar {
               background: rgba(255, 255, 255, 0.98);
-              backdrop-filter: blur(15px);
-              border-bottom: 1px solid rgba(45, 139, 186, 0.1);
+              border-bottom: 1px solid #e0e0e0;
               position: fixed;
               top: 0;
               width: 100%;
               z-index: 1000;
-              box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+              box-shadow: 0 2px 10px rgba(0,0,0,0.1);
           }
 
           .nav-container {
@@ -54,14 +43,13 @@
           .nav-brand {
               display: flex;
               align-items: center;
-              gap: 15px;
+              gap: 12px;
           }
 
           .logo {
-              width: 45px;
-              height: 45px;
-              border-radius: 12px;
-              box-shadow: 0 4px 15px rgba(45, 139, 186, 0.3);
+              width: 40px;
+              height: 40px;
+              border-radius: 8px;
           }
 
           .nav-brand a {
@@ -69,13 +57,12 @@
               font-weight: 800;
               color: #2d8bba;
               text-decoration: none;
-              letter-spacing: -0.5px;
           }
 
           .nav-menu {
               display: flex;
               list-style: none;
-              gap: 35px;
+              gap: 30px;
               align-items: center;
           }
 
@@ -84,29 +71,11 @@
               color: #333;
               font-weight: 600;
               font-size: 16px;
-              transition: all 0.3s ease;
-              padding: 8px 0;
-              position: relative;
+              transition: color 0.3s ease;
+              padding: 10px 0;
           }
 
-          .nav-menu a:hover {
-              color: #2d8bba;
-          }
-
-          .nav-menu a::after {
-              content: '';
-              position: absolute;
-              bottom: 0;
-              left: 0;
-              width: 0;
-              height: 2px;
-              background: #2d8bba;
-              transition: width 0.3s ease;
-          }
-
-          .nav-menu a:hover::after {
-              width: 100%;
-          }
+          .nav-menu a:hover { color: #2d8bba; }
 
           .nav-auth {
               background: linear-gradient(135deg, #2d8bba, #1e5f7a)        
@@ -116,88 +85,45 @@
               border-radius: 25px;
               font-weight: 700;
               box-shadow: 0 4px 15px rgba(45, 139, 186, 0.3);
-              transition: all 0.3s ease;
-          }
-
-          .nav-auth:hover {
-              transform: translateY(-2px);
-              box-shadow: 0 8px 25px rgba(45, 139, 186, 0.4);
-          }
-
-          .nav-auth::after {
-              display: none;
           }
 
           /* 主視覺區域 */
           .hero-section {
-              height: 100vh;
+              min-height: 100vh;
               background: linear-gradient(135deg, rgba(45, 139, 186,       
   0.9), rgba(30, 95, 122, 0.9)),
-                          url('https://images.unsplash.com/photo-152220    
-  2176988-66273c2fd55f?w=1920&h=1080&fit=crop') center/cover;
+                          url('data:image/svg+xml,<svg 
+  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect         
+  fill="%23f0f8ff" width="1920" height="1080"/><circle fill="%232d8bba"
+   opacity="0.1" cx="400" cy="300" r="200"/><circle fill="%231e5f7a"       
+  opacity="0.1" cx="1200" cy="600" r="300"/></svg>') center/cover;
               display: flex;
               align-items: center;
-              position: relative;
               color: white;
-          }
-
-          .hero-particles {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              background-image: radial-gradient(circle,
-  rgba(255,255,255,0.1) 1px, transparent 1px);
-              background-size: 50px 50px;
-              opacity: 0.3;
-              animation: float 20s infinite linear;
-          }
-
-          @keyframes float {
-              0% { transform: translateY(0); }
-              100% { transform: translateY(-50px); }
-          }
-
-          .hero-content {
-              position: relative;
-              z-index: 2;
               text-align: center;
+              padding-top: 80px;
           }
 
-          .hero-subtitle-top {
-              font-size: 20px;
-              font-weight: 400;
-              margin-bottom: 20px;
-              opacity: 0.9;
-              letter-spacing: 3px;
-          }
-
-          .hero-title {
-              font-size: clamp(64px, 10vw, 96px);
+          .hero-content h1 {
+              font-size: clamp(48px, 8vw, 80px);
               font-weight: 900;
               line-height: 1.1;
               margin-bottom: 25px;
               text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
-              letter-spacing: -2px;
           }
 
           .hero-english {
-              font-size: clamp(22px, 3vw, 28px);
+              font-size: clamp(20px, 3vw, 28px);
               margin-bottom: 30px;
-              opacity: 0.95;
-              font-weight: 300;
-              letter-spacing: 2px;
               font-style: italic;
+              opacity: 0.95;
           }
 
           .hero-tagline {
-              font-size: clamp(20px, 2.5vw, 26px);
+              font-size: clamp(18px, 2.5vw, 24px);
               margin-bottom: 50px;
+              line-height: 1.5;
               opacity: 0.9;
-              font-weight: 500;
-              letter-spacing: 1px;
-              line-height: 1.4;
           }
 
           .hero-buttons {
@@ -205,44 +131,22 @@
               gap: 25px;
               justify-content: center;
               flex-wrap: wrap;
-              margin-top: 40px;
           }
 
           .btn {
-              display: inline-flex;
-              align-items: center;
-              justify-content: center;
+              display: inline-block;
               padding: 18px 40px;
-              border: none;
               border-radius: 35px;
               font-size: 18px;
               font-weight: 700;
               text-decoration: none;
-              cursor: pointer;
               transition: all 0.3s ease;
               min-width: 180px;
-              position: relative;
-              overflow: hidden;
-          }
-
-          .btn::before {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: -100%;
-              width: 100%;
-              height: 100%;
-              background: linear-gradient(90deg, transparent,
-  rgba(255,255,255,0.2), transparent);
-              transition: left 0.5s;
-          }
-
-          .btn:hover::before {
-              left: 100%;
+              text-align: center;
           }
 
           .btn-primary {
-              background: linear-gradient(135deg, #fff, #f0f8ff);
+              background: white;
               color: #2d8bba;
               box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
           }
@@ -255,32 +159,27 @@
           .btn-secondary {
               background: transparent;
               color: white;
-              border: 3px solid rgba(255, 255, 255, 0.8);
-              box-shadow: 0 6px 20px rgba(45, 139, 186, 0.2);
+              border: 3px solid white;
           }
 
           .btn-secondary:hover {
-              background: rgba(255, 255, 255, 0.1);
+              background: white;
+              color: #2d8bba;
               transform: translateY(-3px);
-              box-shadow: 0 12px 35px rgba(45, 139, 186, 0.3);
-              border-color: white;
           }
 
           /* 區塊樣式 */
           .section {
-              padding: 120px 0;
-              position: relative;
+              padding: 100px 0;
           }
 
           .section-title {
-              font-size: clamp(42px, 6vw, 56px);
+              font-size: clamp(36px, 6vw, 56px);
               font-weight: 800;
               text-align: center;
-              margin-bottom: 80px;
+              margin-bottom: 60px;
               color: #333;
               position: relative;
-              display: inline-block;
-              width: 100%;
           }
 
           .section-title::after {
@@ -298,64 +197,27 @@
           .about-section {
               background: linear-gradient(135deg, #f8fbff 0%, #ffffff      
   100%);
-              position: relative;
-          }
-
-          .about-section::before {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              background-image: url('https://images.unsplash.com/photo-    
-  1557804506-669a67965ba0?w=100&h=100&fit=crop&opacity=0.1');
-              opacity: 0.03;
-              background-repeat: repeat;
           }
 
           .about-grid {
               display: grid;
               grid-template-columns: 1fr 2fr;
-              gap: 80px;
+              gap: 60px;
               align-items: center;
-          }
-
-          .about-image {
-              position: relative;
-          }
-
-          .about-image::before {
-              content: '';
-              position: absolute;
-              top: -20px;
-              right: -20px;
-              width: 100%;
-              height: 100%;
-              background: linear-gradient(135deg, #2d8bba, #1e5f7a);       
-              border-radius: 20px;
-              z-index: -1;
-              opacity: 0.1;
           }
 
           .about-image img {
               width: 100%;
-              max-width: 450px;
+              max-width: 400px;
               border-radius: 20px;
-              box-shadow: 0 8px 40px rgba(45, 139, 186, 0.2);
-              transition: transform 0.3s ease;
-          }
-
-          .about-image img:hover {
-              transform: translateY(-10px);
+              box-shadow: 0 10px 40px rgba(45, 139, 186, 0.2);
           }
 
           .about-content h2 {
-              font-size: clamp(36px, 5vw, 48px);
+              font-size: clamp(28px, 5vw, 42px);
               font-weight: 800;
-              margin-bottom: 40px;
+              margin-bottom: 30px;
               color: #2d8bba;
-              line-height: 1.2;
           }
 
           .about-content p {
@@ -363,54 +225,38 @@
               line-height: 1.8;
               margin-bottom: 25px;
               color: #555;
-              font-weight: 400;
           }
 
           .quote-banner {
-              padding: 100px 0;
               background: linear-gradient(135deg, rgba(45, 139, 186,       
   0.95), rgba(30, 95, 122, 0.95)),
-                          url('https://images.unsplash.com/photo-151938    
-  9950473-47ba0277781c?w=1920&h=600&fit=crop') center/cover;
+                          url('data:image/svg+xml,<svg 
+  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 600"><rect 
+  fill="%23f0f8ff" width="1920" height="600"/><path fill="%232d8bba"       
+  opacity="0.1" d="M0,300 Q480,200 960,300 T1920,300 V600 H0 
+  Z"/></svg>') center/cover;
               color: white;
               text-align: center;
-              position: relative;
-          }
-
-          .quote-banner::before {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              background: linear-gradient(45deg, transparent 30%,
-  rgba(255,255,255,0.1) 50%, transparent 70%);
+              padding: 80px 0;
           }
 
           .quote-text {
-              font-size: clamp(32px, 5vw, 48px);
+              font-size: clamp(24px, 5vw, 42px);
               font-weight: 700;
               line-height: 1.4;
               text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-              position: relative;
-              z-index: 2;
-              max-width: 800px;
-              margin: 0 auto;
           }
 
           .themes-section {
               background: linear-gradient(135deg, #ffffff 0%, #f0f8ff      
   100%);
-              position: relative;
           }
 
           .themes-grid {
               display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(350px,        
+              grid-template-columns: repeat(auto-fit, minmax(320px,        
   1fr));
-              gap: 50px;
-              margin-bottom: 60px;
+              gap: 40px;
           }
 
           .theme-card {
@@ -418,21 +264,9 @@
               border-radius: 20px;
               padding: 40px;
               text-align: center;
-              box-shadow: 0 8px 40px rgba(45, 139, 186, 0.1);
-              transition: all 0.3s ease;
-              border: 1px solid rgba(45, 139, 186, 0.05);
-              position: relative;
-              overflow: hidden;
-          }
-
-          .theme-card::before {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 4px;
-              background: linear-gradient(135deg, #2d8bba, #1e5f7a);       
+              box-shadow: 0 10px 40px rgba(45, 139, 186, 0.1);
+              transition: transform 0.3s ease;
+              border-top: 4px solid #2d8bba;
           }
 
           .theme-card:hover {
@@ -442,19 +276,14 @@
 
           .theme-image {
               width: 100%;
-              height: 250px;
+              height: 200px;
               object-fit: cover;
               border-radius: 15px;
-              margin-bottom: 30px;
-              transition: transform 0.3s ease;
-          }
-
-          .theme-card:hover .theme-image {
-              transform: scale(1.05);
+              margin-bottom: 25px;
           }
 
           .theme-card h3 {
-              font-size: 28px;
+              font-size: 26px;
               font-weight: 700;
               margin-bottom: 20px;
               color: #2d8bba;
@@ -464,74 +293,26 @@
               font-size: 18px;
               line-height: 1.7;
               color: #666;
-              font-weight: 400;
-          }
-
-          .services-section {
-              background: linear-gradient(135deg, rgba(45, 139, 186,       
-  0.95), rgba(30, 95, 122, 0.95)),
-                          url('https://images.unsplash.com/photo-155266    
-  4730-d307ca884978?w=1920&h=800&fit=crop') center/cover;
-              color: white;
-          }
-
-          .services-section .section-title {
-              color: white;
-          }
-
-          .services-section .section-title::after {
-              background: linear-gradient(135deg, #fff,
-  rgba(255,255,255,0.8));
-          }
-
-          .services-grid {
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(280px,        
-  1fr));
-              gap: 30px;
-          }
-
-          .service-btn {
-              padding: 25px 20px;
-              background: rgba(255, 255, 255, 0.1);
-              border: 2px solid rgba(255, 255, 255, 0.3);
-              border-radius: 15px;
-              color: white;
-              font-size: 18px;
-              font-weight: 600;
-              cursor: pointer;
-              transition: all 0.3s ease;
-              backdrop-filter: blur(10px);
-          }
-
-          .service-btn:hover,
-          .service-btn.active {
-              background: rgba(255, 255, 255, 0.2);
-              border-color: rgba(255, 255, 255, 0.8);
-              transform: translateY(-5px);
-              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
           }
 
           .contact-section {
               background: linear-gradient(135deg, #f0f8ff 0%, #ffffff      
   100%);
-              position: relative;
           }
 
           .contact-grid {
               display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(380px,        
+              grid-template-columns: repeat(auto-fit, minmax(350px,        
   1fr));
-              gap: 50px;
+              gap: 40px;
           }
 
           .contact-card {
               background: white;
               border-radius: 20px;
               overflow: hidden;
-              box-shadow: 0 8px 40px rgba(45, 139, 186, 0.1);
-              transition: all 0.3s ease;
-              border: 1px solid rgba(45, 139, 186, 0.05);
+              box-shadow: 0 10px 40px rgba(45, 139, 186, 0.1);
+              transition: transform 0.3s ease;
           }
 
           .contact-card:hover {
@@ -541,58 +322,40 @@
 
           .contact-image {
               width: 100%;
-              height: 250px;
+              height: 200px;
               object-fit: cover;
-              transition: transform 0.3s ease;
-          }
-
-          .contact-card:hover .contact-image {
-              transform: scale(1.05);
           }
 
           .contact-info {
-              padding: 40px;
+              padding: 30px;
           }
 
           .contact-info h3 {
-              font-size: 26px;
+              font-size: 24px;
               font-weight: 700;
-              margin-bottom: 25px;
+              margin-bottom: 20px;
               color: #2d8bba;
           }
 
           .contact-info p {
               font-size: 18px;
-              margin-bottom: 15px;
+              margin-bottom: 12px;
               color: #666;
-              line-height: 1.7;
-              font-weight: 400;
+              line-height: 1.6;
           }
 
           .footer {
               background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d      
   100%);
               color: white;
-              padding: 80px 0 40px;
-              position: relative;
-          }
-
-          .footer::before {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 1px;
-              background: linear-gradient(90deg, transparent, #2d8bba,
-  transparent);
+              padding: 60px 0 30px;
           }
 
           .footer-content {
               display: grid;
-              grid-template-columns: 2fr 2fr 1fr;
-              gap: 60px;
-              margin-bottom: 60px;
+              grid-template-columns: 2fr 1fr 1fr;
+              gap: 40px;
+              margin-bottom: 40px;
           }
 
           .footer-brand h3 {
@@ -604,86 +367,35 @@
 
           .footer-brand p {
               font-size: 16px;
-              line-height: 1.6;
-              margin-bottom: 10px;
+              margin-bottom: 8px;
+              opacity: 0.9;
           }
 
           .footer-english {
-              font-size: 15px;
-              color: rgba(255, 255, 255, 0.7);
               font-style: italic;
-              font-weight: 300;
+              opacity: 0.7;
           }
 
           .footer-bottom {
               text-align: center;
-              padding-top: 40px;
+              padding-top: 30px;
               border-top: 1px solid rgba(255, 255, 255, 0.1);
-              color: rgba(255, 255, 255, 0.6);
               font-size: 16px;
+              opacity: 0.6;
           }
 
           /* 響應式設計 */
           @media (max-width: 768px) {
-              .nav-menu {
-                  display: none;
-              }
-
-              .hero-title {
-                  font-size: clamp(48px, 12vw, 72px);
-              }
-
-              .about-grid {
-                  grid-template-columns: 1fr;
-                  gap: 50px;
-              }
-
-              .themes-grid {
-                  grid-template-columns: 1fr;
-                  gap: 40px;
-              }
-
-              .contact-grid {
-                  grid-template-columns: 1fr;
-                  gap: 40px;
-              }
-
-              .footer-content {
-                  grid-template-columns: 1fr;
-                  gap: 40px;
-                  text-align: center;
-              }
-
-              .section {
-                  padding: 80px 0;
-              }
-
-              .hero-buttons {
-                  flex-direction: column;
-                  align-items: center;
-                  gap: 20px;
-              }
-
-              .btn {
-                  width: 100%;
-                  max-width: 300px;
-              }
-
-              .services-grid {
-                  grid-template-columns: 1fr;
-              }
-          }
-
-          /* 載入動畫 */
-          .fade-in {
-              opacity: 0;
-              transform: translateY(30px);
-              transition: all 0.8s ease;
-          }
-
-          .fade-in.visible {
-              opacity: 1;
-              transform: translateY(0);
+              .nav-menu { display: none; }
+              .about-grid { grid-template-columns: 1fr; gap: 40px; }       
+              .themes-grid { grid-template-columns: 1fr; }
+              .contact-grid { grid-template-columns: 1fr; }
+              .footer-content { grid-template-columns: 1fr; text-align:    
+   center; }
+              .section { padding: 60px 0; }
+              .hero-buttons { flex-direction: column; align-items:
+  center; }
+              .btn { width: 100%; max-width: 280px; }
           }
       </style>
   </head>
@@ -693,14 +405,12 @@
           <div class="nav-container">
               <div class="nav-brand">
                   <img src="https://images.unsplash.com/photo-161468037    
-  6739-414d95ff43df?w=80&h=80&fit=crop&crop=center" alt="ADCS Logo"        
-  class="logo">
+  6739-414d95ff43df?w=80&h=80&fit=crop" alt="ADCS Logo" class="logo">      
                   <a href="#hero">ADCS</a>
               </div>
               <ul class="nav-menu">
                   <li><a href="#about">關於我們</a></li>
                   <li><a href="#themes">核心主題</a></li>
-                  <li><a href="#services">課程服務</a></li>
                   <li><a href="#contact">聯絡我們</a></li>
                   <li><a href="#contact" 
   class="nav-auth">會員登入</a></li>
@@ -710,14 +420,9 @@
 
       <!-- Hero Section -->
       <section id="hero" class="hero-section">
-          <div class="hero-particles"></div>
           <div class="container">
-              <div class="hero-content fade-in">
-                  <p class="hero-subtitle-top">since 2024</p>
-                  <h1 class="hero-title">
-                      中華多元職能<br>
-                      交流發展協會
-                  </h1>
+              <div class="hero-content">
+                  <h1>中華多元職能<br>交流發展協會</h1>
                   <p class="hero-english">Association for Diverse
   Competence & Sustainability</p>
                   <p class="hero-tagline">
@@ -738,23 +443,20 @@
       <!-- About Section -->
       <section id="about" class="section about-section">
           <div class="container">
-              <h2 class="section-title fade-in">關於我們</h2>
-              <div class="about-grid fade-in">
+              <h2 class="section-title">關於我們</h2>
+              <div class="about-grid">
                   <div class="about-image">
                       <img src="https://images.unsplash.com/photo-15731    
-  64713714-d95e436ab8d6?w=500&h=500&fit=crop&crop=face" alt="協會願景">    
+  64713714-d95e436ab8d6?w=400&h=400&fit=crop" alt="協會願景">
                   </div>
                   <div class="about-content">
                       <h2>開創多元職能新時代</h2>
                       <p>中華多元職能交流發展協會（ADCS）成立於2024年，    
-  致力於整合AI應用、腦健康促進、永續發展與工作生活平衡等多元領域，為現     
-  代職場人士提供全方位的專業支持與發展機會。</p>
+  致力於整合AI應用、腦健康促進、永續發展與工作生活平衡等多元領域。</p>     
                       <p>我們相信透過跨領域的知識交流與實務應用，能夠協    
-  助個人與組織在快速變遷的時代中，找到最適合的發展路徑，實現個人成長與     
-  社會永續發展的雙贏局面。</p>
-
-  <p>協會匯聚各界專家學者，透過系統性的課程設計、實務工作坊與交流活動，    
-  建構完整的學習生態系統，打造台灣最具前瞻性的多元職能發展平台。</p>       
+  助個人與組織在快速變遷的時代中，找到最適合的發展路徑。</p>
+                      <p>協會匯聚各界專家學者，透過系統性的課程設計、實    
+  務工作坊與交流活動，建構完整的學習生態系統。</p>
                   </div>
               </div>
           </div>
@@ -763,9 +465,9 @@
       <!-- Quote Banner -->
       <section class="quote-banner">
           <div class="container">
-              <h2 class="quote-text fade-in">
-                  「在變化的世界中，唯有不斷學習與適應，<br>
-                  才能創造永續的價值與影響力」
+              <h2 class="quote-text">
+                  在變化的世界中，唯有不斷學習與適應，<br>
+                  才能創造永續的價值與影響力
               </h2>
           </div>
       </section>
@@ -773,27 +475,27 @@
       <!-- Core Themes -->
       <section id="themes" class="section themes-section">
           <div class="container">
-              <h2 class="section-title fade-in">三大核心主題</h2>
+              <h2 class="section-title">三大核心主題</h2>
               <div class="themes-grid">
-                  <div class="theme-card fade-in">
+                  <div class="theme-card">
                       <img src="https://images.unsplash.com/photo-15597    
-  57148-5c350d0d3c56?w=400&h=250&fit=crop" alt="健康促進" 
+  57148-5c350d0d3c56?w=400&h=200&fit=crop" alt="健康促進" 
   class="theme-image">
                       <h3>健康促進</h3>
                       <p>整合腦科學與身心健康研究，提供全方位的健康管理    
   解決方案，協助個人建立健康的生活型態與工作模式。</p>
                   </div>
-                  <div class="theme-card fade-in">
+                  <div class="theme-card">
                       <img src="https://images.unsplash.com/photo-14419    
-  86300917-64674bd600d8?w=400&h=250&fit=crop" alt="永續發展" 
+  86300917-64674bd600d8?w=400&h=200&fit=crop" alt="永續發展" 
   class="theme-image">
                       <h3>永續發展</h3>
                       <p>推動環境友善與社會責任實踐，創造可持續發展的未    
   來，結合ESG理念打造企業與個人的永續競爭力。</p>
                   </div>
-                  <div class="theme-card fade-in">
+                  <div class="theme-card">
                       <img src="https://images.unsplash.com/photo-14858    
-  27404703-89b55fcc595e?w=400&h=250&fit=crop" alt="AI應用" 
+  27404703-89b55fcc595e?w=400&h=200&fit=crop" alt="AI應用" 
   class="theme-image">
                       <h3>AI 創新應用</h3>
                       <p>探索人工智慧在生活與工作中的實際應用與未來趨勢    
@@ -803,47 +505,27 @@
           </div>
       </section>
 
-      <!-- Services Section -->
-      <section id="services" class="section services-section">
-          <div class="container">
-              <h2 class="section-title fade-in">專業課程與服務</h2>
-              <div class="services-grid fade-in">
-                  <button 
-  class="service-btn">大腦科學與認知優化</button>
-                  <button class="service-btn">AI智能工具應用</button>      
-                  <button class="service-btn">情緒壓力管理</button>        
-                  <button 
-  class="service-btn">自然療癒與身心平衡</button>
-                  <button class="service-btn 
-  active">永續發展實務</button>
-                  <button class="service-btn">跨界整合創新</button>        
-                  <button class="service-btn">職涯發展諮詢</button>        
-                  <button class="service-btn">專業工作坊</button>
-              </div>
-          </div>
-      </section>
-
       <!-- Contact Section -->
       <section id="contact" class="section contact-section">
           <div class="container">
-              <h2 class="section-title fade-in">聯絡我們</h2>
+              <h2 class="section-title">聯絡我們</h2>
               <div class="contact-grid">
-                  <div class="contact-card fade-in">
+                  <div class="contact-card">
                       <img src="https://images.unsplash.com/photo-14973    
-  66216548-37526070297c?w=400&h=250&fit=crop" alt="台北總部" 
+  66216548-37526070297c?w=400&h=200&fit=crop" alt="台北總部" 
   class="contact-image">
                       <div class="contact-info">
-                          <h3>桃園總部</h3>
-                          <p>📍 桃園市中壢區龍岡路一段135號6樓</p>
-                          <p>📞 (03) 428-8917</p>
-                          <p>📠 (03) 428-8917</p>
-                          <p>✉️ funrelaxinglife@gmail.com</p>
+                          <h3>台北總部</h3>
+                          <p>📍 台北市信義區信義路五段7號32樓</p>
+                          <p>📞 (02) 2345-6789</p>
+                          <p>📠 (02) 2345-6790</p>
+                          <p>✉️ info@adcs.org.tw</p>
                           <p>🕘 週一至週五 09:00-18:00</p>
                       </div>
                   </div>
-                  <div class="contact-card fade-in">
+                  <div class="contact-card">
                       <img src="https://images.unsplash.com/photo-15567    
-  61175-4b46a572b786?w=400&h=250&fit=crop" alt="線上服務" 
+  61175-4b46a572b786?w=400&h=200&fit=crop" alt="線上服務" 
   class="contact-image">
                       <div class="contact-info">
                           <h3>數位學習平台</h3>
@@ -854,9 +536,9 @@
                           <p>🎯 客製化學習方案</p>
                       </div>
                   </div>
-                  <div class="contact-card fade-in">
+                  <div class="contact-card">
                       <img src="https://images.unsplash.com/photo-15427    
-  44173-8e7e53415bb0?w=400&h=250&fit=crop" alt="企業合作" 
+  44173-8e7e53415bb0?w=400&h=200&fit=crop" alt="企業合作" 
   class="contact-image">
                       <div class="contact-info">
                           <h3>企業合作方案</h3>
@@ -874,41 +556,36 @@
       <!-- Footer -->
       <footer class="footer">
           <div class="container">
-              <div class="footer-content fade-in">
+              <div class="footer-content">
                   <div class="footer-brand">
                       <h3>ADCS</h3>
                       <p>中華多元職能交流發展協會</p>
                       <p class="footer-english">Association for Diverse    
    Competence & Sustainability</p>
-                      <p style="margin-top: 20px; font-size: 14px;         
-  opacity: 0.8;">
-                          致力於整合多元專業領域，<br>
-                          創造個人與組織的永續價值
+                      <p style="margin-top: 15px; font-size: 14px;">       
+
+  致力於整合多元專業領域，創造個人與組織的永續價值
                       </p>
                   </div>
                   <div class="footer-links">
-                      <p style="font-size: 18px; font-weight: 600;         
-  margin-bottom: 15px; color: #2d8bba;">快速連結</p>
-                      <p style="margin-bottom: 8px;">• 關於協會</p>        
-                      <p style="margin-bottom: 8px;">• 課程服務</p>        
-                      <p style="margin-bottom: 8px;">• 會員專區</p>        
-                      <p style="margin-bottom: 8px;">• 最新消息</p>        
-                      <p style="margin-bottom: 8px;">• 聯絡我們</p>        
+                      <p style="font-weight: 600; margin-bottom: 10px;     
+  color: #2d8bba;">快速連結</p>
+                      <p>• 關於協會</p>
+                      <p>• 課程服務</p>
+                      <p>• 會員專區</p>
+                      <p>• 聯絡我們</p>
                   </div>
                   <div class="footer-contact">
-                      <p style="font-size: 18px; font-weight: 600;         
-  margin-bottom: 15px; color: #2d8bba;">聯絡資訊</p>
-                      <p style="margin-bottom: 8px; font-size: 
-  14px;">📞 (03) 428-8917</p>
-                      <p style="margin-bottom: 8px; font-size: 
-  14px;">✉️ funrelaxinglife@gmail.com</p>
-                      <p style="margin-bottom: 8px; font-size: 
-  14px;">📱 LINE: @adcs2024</p>
+                      <p style="font-weight: 600; margin-bottom: 10px;     
+  color: #2d8bba;">聯絡資訊</p>
+                      <p>📞 (02) 2345-6789</p>
+                      <p>✉️ info@adcs.org.tw</p>
+                      <p>📱 LINE: @adcs2024</p>
                   </div>
               </div>
               <div class="footer-bottom">
                   <p>© 2024 中華多元職能交流發展協會 ADCS. All Rights      
-  Reserved. | 版權所有，翻印必究</p>
+  Reserved.</p>
               </div>
           </div>
       </footer>
@@ -921,55 +598,26 @@
                   const target =
   document.querySelector(this.getAttribute('href'));
                   if (target) {
-                      target.scrollIntoView({
-                          behavior: 'smooth',
-                          block: 'start'
-                      });
+                      target.scrollIntoView({ behavior: 'smooth',
+  block: 'start' });
                   }
               });
           });
 
-          // 導覽列背景變化
+          // 導覽列效果
           window.addEventListener('scroll', function() {
               const navbar = document.querySelector('.navbar');
               if (window.scrollY > 100) {
                   navbar.style.background = 'rgba(255, 255, 255, 
   0.98)';
-                  navbar.style.boxShadow = '0 4px 30px rgba(45, 139,       
+                  navbar.style.boxShadow = '0 4px 20px rgba(45, 139,       
   186, 0.15)';
               } else {
                   navbar.style.background = 'rgba(255, 255, 255, 
   0.98)';
-                  navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0,       
-  0.1)';
+                  navbar.style.boxShadow = '0 2px 10px 
+  rgba(0,0,0,0.1)';
               }
-          });
-
-          // 滾動動畫
-          const observerOptions = {
-              threshold: 0.1,
-              rootMargin: '0px 0px -100px 0px'
-          };
-
-          const observer = new IntersectionObserver(function(entries) {    
-              entries.forEach(entry => {
-                  if (entry.isIntersecting) {
-                      entry.target.classList.add('visible');
-                  }
-              });
-          }, observerOptions);
-
-          document.querySelectorAll('.fade-in').forEach(el => {
-              observer.observe(el);
-          });
-
-          // 服務按鈕互動
-          document.querySelectorAll('.service-btn').forEach(btn => {       
-              btn.addEventListener('click', function() {
-                  document.querySelectorAll('.service-btn').forEach(b      
-  => b.classList.remove('active'));
-                  this.classList.add('active');
-              });
           });
 
           console.log('🚀 ADCS 網站載入完成！');
