@@ -3,244 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>會員登入 | MDVTA 中華多元職能交流發展協會</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="auth.css">
+    <title>會員登入/註冊 | ADCS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #2d8bba;
+            --secondary-blue: #1e5f7a;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-container {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .auth-header {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .auth-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .auth-header p {
+            opacity: 0.9;
+        }
+
+        .auth-content {
+            padding: 40px 30px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--secondary-blue);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: var(--text-light);
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="index.html">MDVTA</a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">返回首頁</a></li>
-                <li><a href="#" class="auth-toggle">註冊</a></li>
-            </ul>
+    <div class="auth-container">
+        <div class="auth-header">
+            <h1>ADCS 會員系統</h1>
+            <p>中華多元職能交流發展協會</p>
         </div>
-    </nav>
 
-    <!-- Auth Container -->
-    <section class="auth-section">
-        <div class="container">
-            <div class="auth-container">
-                <!-- Login Form -->
-                <div id="login-form" class="auth-form active">
-                    <div class="auth-header">
-                        <h2>會員登入</h2>
-                        <p>歡迎回到 MDVTA！請登入您的帳號</p>
-                    </div>
-
-                    <form class="form" id="loginForm">
-                        <div class="form-group">
-                            <label for="loginEmail">電子郵件</label>
-                            <input type="email" id="loginEmail" name="email" required 
-                                   placeholder="請輸入您的電子郵件">
-                            <span class="error-message" id="loginEmailError"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="loginPassword">密碼</label>
-                            <div class="password-input">
-                                <input type="password" id="loginPassword" name="password" required 
-                                       placeholder="請輸入您的密碼">
-                                <button type="button" class="password-toggle" data-target="loginPassword">
-                                    👁️
-                                </button>
-                            </div>
-                            <span class="error-message" id="loginPasswordError"></span>
-                        </div>
-
-                        <div class="form-options">
-                            <label class="checkbox-container">
-                                <input type="checkbox" id="rememberMe" name="remember">
-                                <span class="checkmark"></span>
-                                記住我
-                            </label>
-                            <a href="#" class="forgot-password">忘記密碼？</a>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <span class="btn-text">登入</span>
-                            <span class="btn-loading" style="display: none;">登入中...</span>
-                        </button>
-
-                        <div class="auth-footer">
-                            <p>還不是會員嗎？ <a href="#" class="auth-switch" data-target="register">立即註冊</a></p>
-                        </div>
-                    </form>
-
-                    <!-- Social Login (暫時隱藏，需要設定 Google OAuth) -->
-                    <!-- 
-                    <div class="social-login">
-                        <div class="divider">
-                            <span>或</span>
-                        </div>
-                        <button type="button" class="btn btn-outline social-btn">
-                            <span>📧</span>
-                            使用 Google 登入
-                        </button>
-                    </div>
-                    -->
-                </div>
-
-                <!-- Register Form -->
-                <div id="register-form" class="auth-form">
-                    <div class="auth-header">
-                        <h2>會員註冊</h2>
-                        <p>加入 MDVTA，開啟您的學習旅程</p>
-                    </div>
-
-                    <form class="form" id="registerForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="registerName">姓名 *</label>
-                                <input type="text" id="registerName" name="name" required 
-                                       placeholder="請輸入您的真實姓名">
-                                <span class="error-message" id="registerNameError"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="registerPhone">電話</label>
-                                <input type="tel" id="registerPhone" name="phone" 
-                                       placeholder="請輸入您的電話號碼">
-                                <span class="error-message" id="registerPhoneError"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="registerEmail">電子郵件 *</label>
-                            <input type="email" id="registerEmail" name="email" required 
-                                   placeholder="請輸入您的電子郵件">
-                            <span class="error-message" id="registerEmailError"></span>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="registerPassword">密碼 *</label>
-                                <div class="password-input">
-                                    <input type="password" id="registerPassword" name="password" required 
-                                           placeholder="至少 8 個字元">
-                                    <button type="button" class="password-toggle" data-target="registerPassword">
-                                        👁️
-                                    </button>
-                                </div>
-                                <div class="password-strength" id="passwordStrength"></div>
-                                <span class="error-message" id="registerPasswordError"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="confirmPassword">確認密碼 *</label>
-                                <div class="password-input">
-                                    <input type="password" id="confirmPassword" name="confirmPassword" required 
-                                           placeholder="請再次輸入密碼">
-                                    <button type="button" class="password-toggle" data-target="confirmPassword">
-                                        👁️
-                                    </button>
-                                </div>
-                                <span class="error-message" id="confirmPasswordError"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="occupation">職業</label>
-                                <select id="occupation" name="occupation">
-                                    <option value="">請選擇職業</option>
-                                    <option value="student">學生</option>
-                                    <option value="employee">上班族</option>
-                                    <option value="manager">主管</option>
-                                    <option value="entrepreneur">創業者</option>
-                                    <option value="freelancer">自由工作者</option>
-                                    <option value="retired">退休</option>
-                                    <option value="other">其他</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="company">公司/組織</label>
-                                <input type="text" id="company" name="company" 
-                                       placeholder="請輸入公司或組織名稱">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="checkbox-container">
-                                <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
-                                <span class="checkmark"></span>
-                                我已閱讀並同意 <a href="#" class="terms-link">服務條款</a> 和 <a href="#" class="privacy-link">隱私政策</a>
-                            </label>
-                            <span class="error-message" id="agreeTermsError"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="checkbox-container">
-                                <input type="checkbox" id="subscribeNewsletter" name="subscribeNewsletter" checked>
-                                <span class="checkmark"></span>
-                                我願意接收 MDVTA 的最新課程資訊與電子報
-                            </label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <span class="btn-text">立即註冊</span>
-                            <span class="btn-loading" style="display: none;">註冊中...</span>
-                        </button>
-
-                        <div class="auth-footer">
-                            <p>已經是會員了？ <a href="#" class="auth-switch" data-target="login">立即登入</a></p>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Success Message -->
-                <div id="success-message" class="auth-form success-form">
-                    <div class="success-icon">✅</div>
-                    <h2>註冊成功！</h2>
-                    <p>歡迎加入 MDVTA！我們已發送驗證郵件到您的信箱，請點擊郵件中的連結完成帳號驗證。</p>
-                    <div class="success-actions">
-                        <button class="btn btn-primary" onclick="showLogin()">立即登入</button>
-                        <a href="index.html" class="btn btn-outline">返回首頁</a>
-                    </div>
-                </div>
+        <div class="auth-content">
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">會員登入</button>
+                <button class="tab-btn" onclick="switchTab('register')">新會員註冊</button>
             </div>
-        </div>
-    </section>
 
-    <!-- Terms Modal (簡化版) -->
-    <div id="termsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>服務條款</h3>
-                <span class="modal-close">&times;</span>
+            <div class="message" id="message"></div>
+            <div class="loading" id="loading">處理中...</div>
+
+            <!-- 登入表單 -->
+            <div class="form-section active" id="login-section">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">電子郵件</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">密碼</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn">登入</button>
+                </form>
             </div>
-            <div class="modal-body">
-                <h4>1. 服務內容</h4>
-                <p>MDVTA 提供多元職能交流與發展相關的課程、活動與服務。</p>
-                
-                <h4>2. 會員權利與義務</h4>
-                <p>會員享有參與課程、活動的權利，並應遵守相關規範。</p>
-                
-                <h4>3. 隱私保護</h4>
-                <p>我們承諾保護您的個人資料，詳細內容請參閱隱私政策。</p>
-                
-                <h4>4. 免責聲明</h4>
-                <p>本協會對於課程內容與效果不提供任何明示或暗示的保證。</p>
+
+            <!-- 註冊表單 -->
+            <div class="form-section" id="register-section">
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="register-name">姓名</label>
+                        <input type="text" id="register-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">電子郵件</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-phone">電話</label>
+                        <input type="tel" id="register-phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">密碼</label>
+                        <input type="password" id="register-password" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm">確認密碼</label>
+                        <input type="password" id="register-confirm" required>
+                    </div>
+                    <button type="submit" class="btn">註冊</button>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary modal-close">我了解</button>
+
+            <div class="back-link">
+                <a href="index.html">← 返回首頁</a>
             </div>
         </div>
     </div>
 
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay">
-        <div class="loading-spinner"></div>
-        <p>處理中，請稍候...</p>
-    </div>
+    <script>
+        // 切換登入/註冊分頁
+        function switchTab(tab) {
+            // 更新分頁按鈕
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
 
-    <!-- Supabase CDN (可選，如果載入失敗會使用演示模式) -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onerror="console.log('Supabase CDN failed, using demo mode')"></script>
-    <script src="auth.js"></script>
+            // 更新表單顯示
+            document.querySelectorAll('.form-section').forEach(section => section.classList.remove('active'));
+            document.getElementById(tab + '-section').classList.add('active');
+
+            // 清除訊息
+            hideMessage();
+        }
+
+        // 顯示訊息
+        function showMessage(text, type = 'success') {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = text;
+            messageEl.className = `message ${type}`;
+            messageEl.style.display = 'block';
+        }
+
+        // 隱藏訊息
+        function hideMessage() {
+            document.getElementById('message').style.display = 'none';
+        }
+
+        // 顯示/隱藏載入狀態
+        function toggleLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+            document.querySelectorAll('.btn').forEach(btn => btn.disabled = show);
+        }
+
+        // Google Apps Script API URL
+        const API_URL = 'https://script.google.com/macros/s/AKfycbwWCb5B7FjfF0jeaFiiyv6JB8Ak2gn6uHRgTynyoFzNUT_N3Q8j3KXsHV5XRu7vAgrEsA/exec';
+
+        // 會員註冊
+        document.getElementById('register-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const phone = document.getElementById('register-phone').value;
+            const password = document.getElementById('register-password').value;
+            const confirm = document.getElementById('register-confirm').value;
+
+            // 驗證密碼
+            if (password !== confirm) {
+                showMessage('密碼確認不相符', 'error');
+                return;
+            }
+
+            toggleLoading(true);
+            hideMessage();
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'register',
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        password: password
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showMessage('註冊成功！請使用您的帳號登入。', 'success');
+                    switchTab('login');
+                    document.getElementById('register-form').reset();
+                } else {
+                    showMessage(result.message || '註冊失敗，請稍後再試', 'error');
+                }
+            } catch (error) {
+                showMessage('網路錯誤，請稍後再試', 'error');
+            }
+
+            toggleLoading(false);
+        });
+
+        // 會員登入
+        document.getElementById('login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            toggleLoading(true);
+            hideMessage();
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'login',
+                        email: email,
+                        password: password
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // 儲存登入狀態
+                    localStorage.setItem('adcs_user', JSON.stringify(result.user));
+                    showMessage('登入成功！即將跳轉...', 'success');
+
+                    // 跳轉到會員專區或首頁
+                    setTimeout(() => {
+                        window.location.href = 'index.html#member';
+                    }, 1500);
+                } else {
+                    showMessage(result.message || '登入失敗，請檢查帳號密碼', 'error');
+                }
+            } catch (error) {
+                showMessage('網路錯誤，請稍後再試', 'error');
+            }
+
+            toggleLoading(false);
+        });
+
+        // 頁面載入時檢查URL參數
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const mode = urlParams.get('mode');
+
+            if (mode === 'register') {
+                switchTab('register');
+            }
+        });
+    </script>
 </body>
 </html>
