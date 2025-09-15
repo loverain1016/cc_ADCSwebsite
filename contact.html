@@ -3,315 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>聯絡我們 | MDVTA 中華多元職能交流發展協會</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="contact.css">
+    <title>聯絡我們 | ADCS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #2d8bba;
+            --secondary-blue: #1e5f7a;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-header {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .contact-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-content {
+            padding: 40px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .info-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: var(--border-radius);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--secondary-blue);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-link a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="index.html">MDVTA</a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">返回首頁</a></li>
-                <li><a href="auth.html">會員登入</a></li>
-            </ul>
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1>聯絡我們</h1>
+            <p>中華多元職能交流發展協會</p>
         </div>
-    </nav>
 
-    <!-- Contact Hero Section -->
-    <section class="contact-hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>聯絡我們</h1>
-                <p>有任何問題或建議？我們很樂意聽到您的意見</p>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="info-card">
+                    <h3>桃園總部</h3>
+                    <p>📍 桃園市中壢區龍岡路一段137號6樓</p>
+                    <p>📞 (03) 428-8917</p>
+                    <p>✉️ funrelaxinglife@gmail.com</p>
+                </div>
+                <div class="info-card">
+                    <h3>服務時間</h3>
+                    <p>週一至週五：09:00-18:00</p>
+                    <p>週六：09:00-12:00</p>
+                    <p>週日及國定假日：休息</p>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Contact Form Section -->
-    <section class="contact-form-section">
-        <div class="container">
-            <div class="contact-layout">
-                <!-- Contact Information -->
-                <div class="contact-info-panel">
-                    <div class="info-header">
-                        <h2>聯絡資訊</h2>
-                        <p>多種方式與我們取得聯繫</p>
+            <div class="contact-form">
+                <h3 style="color: var(--primary-blue); margin-bottom: 20px;">聯絡表單</h3>
+
+                <div class="message" id="message"></div>
+
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">姓名 *</label>
+                        <input type="text" id="name" required>
                     </div>
 
-                    <div class="info-items">
-                        <div class="info-item">
-                            <div class="info-icon">🏢</div>
-                            <div class="info-content">
-                                <h3>台北總部</h3>
-                                <p>台北市信義區信義路五段7號<br>
-                                捷運市政府站 2 號出口步行 3 分鐘</p>
-                            </div>
-                        </div>
-
-                        <div class="info-item">
-                            <div class="info-icon">📞</div>
-                            <div class="info-content">
-                                <h3>聯絡電話</h3>
-                                <p>總機：(02) 2345-6789<br>
-                                課程諮詢：分機 101<br>
-                                會員服務：分機 102</p>
-                            </div>
-                        </div>
-
-                        <div class="info-item">
-                            <div class="info-icon">✉️</div>
-                            <div class="info-content">
-                                <h3>電子郵件</h3>
-                                <p>一般查詢：info@mdvta.org.tw<br>
-                                課程報名：courses@mdvta.org.tw<br>
-                                合作洽談：partner@mdvta.org.tw</p>
-                            </div>
-                        </div>
-
-                        <div class="info-item">
-                            <div class="info-icon">⏰</div>
-                            <div class="info-content">
-                                <h3>服務時間</h3>
-                                <p>週一至週五 09:00-18:00<br>
-                                週六 09:00-17:00<br>
-                                週日及國定假日休息</p>
-                            </div>
-                        </div>
-
-                        <div class="info-item">
-                            <div class="info-icon">💬</div>
-                            <div class="info-content">
-                                <h3>線上客服</h3>
-                                <p>LINE ID: @mdvta<br>
-                                Facebook: MDVTA協會<br>
-                                即時線上諮詢服務</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="contact-form-panel">
-                    <div class="form-header">
-                        <h2>留下您的訊息</h2>
-                        <p>我們將在 24 小時內回覆您</p>
+                    <div class="form-group">
+                        <label for="email">電子郵件 *</label>
+                        <input type="email" id="email" required>
                     </div>
 
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-section">
-                            <h3>基本資料</h3>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="contactName">姓名 *</label>
-                                    <input type="text" id="contactName" name="name" required 
-                                           placeholder="請輸入您的姓名">
-                                    <span class="error-message"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="contactPhone">電話</label>
-                                    <input type="tel" id="contactPhone" name="phone" 
-                                           placeholder="請輸入您的電話號碼">
-                                    <span class="error-message"></span>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="contactEmail">電子郵件 *</label>
-                                <input type="email" id="contactEmail" name="email" required 
-                                       placeholder="請輸入您的電子郵件">
-                                <span class="error-message"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="contactCompany">公司/組織</label>
-                                <input type="text" id="contactCompany" name="company" 
-                                       placeholder="請輸入您的公司或組織名稱（選填）">
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>聯絡內容</h3>
-                            <div class="form-group">
-                                <label for="inquiryType">詢問類型 *</label>
-                                <select id="inquiryType" name="inquiryType" required>
-                                    <option value="">請選擇詢問類型</option>
-                                    <option value="course">課程諮詢</option>
-                                    <option value="membership">會員相關</option>
-                                    <option value="partnership">合作提案</option>
-                                    <option value="event">活動報名</option>
-                                    <option value="technical">技術支援</option>
-                                    <option value="feedback">意見回饋</option>
-                                    <option value="other">其他</option>
-                                </select>
-                                <span class="error-message"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="contactSubject">主旨 *</label>
-                                <input type="text" id="contactSubject" name="subject" required 
-                                       placeholder="請簡述您的問題或需求">
-                                <span class="error-message"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="contactMessage">詳細內容 *</label>
-                                <textarea id="contactMessage" name="message" required rows="6" 
-                                          placeholder="請詳細描述您的問題、需求或建議..."></textarea>
-                                <span class="error-message"></span>
-                                <div class="char-count">
-                                    <span id="charCount">0</span> / 1000
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>偏好聯絡方式</h3>
-                            <div class="checkbox-group">
-                                <label class="checkbox-container">
-                                    <input type="checkbox" name="contactMethod" value="email" checked>
-                                    <span class="checkmark"></span>
-                                    電子郵件
-                                </label>
-                                <label class="checkbox-container">
-                                    <input type="checkbox" name="contactMethod" value="phone">
-                                    <span class="checkmark"></span>
-                                    電話聯絡
-                                </label>
-                                <label class="checkbox-container">
-                                    <input type="checkbox" name="contactMethod" value="line">
-                                    <span class="checkmark"></span>
-                                    LINE 訊息
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <div class="form-group">
-                                <label class="checkbox-container">
-                                    <input type="checkbox" id="agreePrivacy" name="agreePrivacy" required>
-                                    <span class="checkmark"></span>
-                                    我已閱讀並同意 <a href="#" class="privacy-link">隱私政策</a>，同意 MDVTA 蒐集、處理及利用我的個人資料
-                                </label>
-                                <span class="error-message"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="checkbox-container">
-                                    <input type="checkbox" id="subscribeUpdates" name="subscribeUpdates">
-                                    <span class="checkmark"></span>
-                                    我願意收到 MDVTA 的最新課程資訊、活動通知與電子報
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary btn-large">
-                                <span class="btn-icon">📤</span>
-                                <span class="btn-text">送出訊息</span>
-                                <span class="btn-loading">傳送中...</span>
-                            </button>
-                            <button type="reset" class="btn btn-outline">重新填寫</button>
-                        </div>
-                    </form>
-
-                    <!-- Success Message -->
-                    <div id="submitSuccess" class="success-panel">
-                        <div class="success-icon">✅</div>
-                        <h3>訊息已成功送出！</h3>
-                        <p>感謝您聯絡 MDVTA。我們已收到您的訊息，將在 24 小時內透過您偏好的方式回覆。</p>
-                        <div class="success-actions">
-                            <button class="btn btn-primary" onclick="resetForm()">傳送其他訊息</button>
-                            <a href="index.html" class="btn btn-outline">返回首頁</a>
-                        </div>
+                    <div class="form-group">
+                        <label for="phone">電話</label>
+                        <input type="tel" id="phone">
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <h2>常見問題</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h3>如何報名課程？</h3>
-                    <p>您可以透過網站線上報名、電話預約或親自到協會辦公室報名。建議先致電確認課程名額。</p>
-                </div>
-                <div class="faq-item">
-                    <h3>會員有什麼優惠？</h3>
-                    <p>會員享有課程優惠價格、優先報名權、免費參加特定活動及專屬資源下載等權益。</p>
-                </div>
-                <div class="faq-item">
-                    <h3>可以申請課程退費嗎？</h3>
-                    <p>開課前7天申請可全額退費，3-6天退費80%，開課後恕不退費。詳細規定請參閱報名須知。</p>
-                </div>
-                <div class="faq-item">
-                    <h3>如何成為講師合作夥伴？</h3>
-                    <p>歡迎有專業背景的講師與我們合作，請透過合作提案表單或直接聯絡我們的合作窗口。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Section (Placeholder) -->
-    <section class="map-section">
-        <div class="container">
-            <h2>位置地圖</h2>
-            <div class="map-container">
-                <div class="map-placeholder">
-                    <div class="map-info">
-                        <h3>🗺️ Google 地圖位置</h3>
-                        <p>台北市信義區信義路五段7號</p>
-                        <p>捷運市政府站 2 號出口步行 3 分鐘</p>
-                        <a href="https://maps.google.com" target="_blank" class="btn btn-outline">開啟地圖</a>
+                    <div class="form-group">
+                        <label for="subject">主題</label>
+                        <select id="subject">
+                            <option value="">請選擇諮詢主題</option>
+                            <option value="course">課程諮詢</option>
+                            <option value="member">會員相關</option>
+                            <option value="cooperation">合作提案</option>
+                            <option value="other">其他</option>
+                        </select>
                     </div>
-                </div>
-                <!-- 實際使用時可以嵌入 Google Maps iframe -->
-                <!-- 
-                <iframe src="Google Maps 嵌入連結" 
-                        width="100%" height="400" style="border:0;" allowfullscreen="" 
-                        loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-                -->
+
+                    <div class="form-group">
+                        <label for="message">訊息內容 *</label>
+                        <textarea id="message-content" required placeholder="請詳細描述您的需求或問題..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">發送訊息</button>
+                </form>
+            </div>
+
+            <div class="back-link">
+                <a href="index.html">← 返回首頁</a>
             </div>
         </div>
-    </section>
-
-    <!-- Footer (簡化版) -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>MDVTA</h3>
-                    <p>中華多元職能交流發展協會</p>
-                </div>
-                <div class="footer-links">
-                    <a href="index.html">返回首頁</a>
-                    <a href="auth.html">會員專區</a>
-                    <a href="#privacy">隱私政策</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 中華多元職能交流發展協會 版權所有</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay">
-        <div class="loading-spinner"></div>
-        <p>傳送中，請稍候...</p>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="contact.js"></script>
+    <script>
+        // 表單提交處理
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const messageContent = document.getElementById('message-content').value;
+
+            // 顯示成功訊息
+            showMessage('感謝您的訊息！我們會盡快回覆您。', 'success');
+
+            // 清空表單
+            this.reset();
+        });
+
+        function showMessage(text, type) {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = text;
+            messageEl.className = `message ${type}`;
+            messageEl.style.display = 'block';
+
+            // 3秒後隱藏訊息
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
