@@ -455,64 +455,63 @@ body {
 /* 服務區域 */
 .services-section {
     padding: 100px 0;
-    background: var(--primary-blue);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&h=600&fit=crop') center/cover;
+    position: relative;
+}
+
+.services-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.services-section .container {
+    position: relative;
+    z-index: 2;
 }
 
 .services-section .section-title {
     color: var(--white);
     margin-bottom: 60px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.services-main-grid {
+.services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.services-category {
-    background: rgba(255, 255, 255, 0.1);
+.service-card {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: var(--border-radius);
-    padding: 30px;
+    padding: 40px 20px;
+    text-align: center;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.services-category:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.category-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 20px;
-    text-align: center;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-    padding-bottom: 15px;
-}
-
-.service-items {
-    display: grid;
-    gap: 12px;
-}
-
-.service-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 8px;
-    color: var(--white);
-    font-size: 0.95rem;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.service-item:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: var(--white);
-    transform: scale(1.02);
+.service-card:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.service-card h3 {
+    color: var(--white);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* 部落格區域 */
@@ -876,22 +875,18 @@ body {
         gap: 30px;
     }
 
-    .services-main-grid {
+    .services-grid {
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
         gap: 20px;
     }
 
-    .services-category {
-        padding: 20px;
+    .service-card {
+        padding: 30px 15px;
     }
 
-    .category-title {
+    .service-card h3 {
         font-size: 1.2rem;
-    }
-
-    .service-item {
-        padding: 12px;
-        font-size: 0.9rem;
     }
 
     .events-grid {
@@ -928,8 +923,10 @@ body {
         font-size: 28px;
     }
 
-    .services-main-grid {
+    .services-grid {
         grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        max-width: 300px;
     }
 
     .about-logo-main {
@@ -1092,80 +1089,27 @@ body {
 
     <!-- Services Section -->
     <section id="services" class="services-section">
+        <div class="services-overlay"></div>
         <div class="container">
             <h2 class="section-title reveal visible">課程與服務</h2>
-            <div class="services-main-grid reveal visible">
-                <div class="services-category">
-                    <h3 class="category-title">大腦科學</h3>
-                    <div class="service-items">
-                        <div class="service-item">腦波檢測與分析</div>
-                        <div class="service-item">認知功能訓練</div>
-                        <div class="service-item">神經回饋治療</div>
-                        <div class="service-item">腦健康評估</div>
-                    </div>
+            <div class="services-grid reveal visible">
+                <div class="service-card">
+                    <h3>大腦科學</h3>
                 </div>
-                <div class="services-category">
-                    <h3 class="category-title">人工智慧</h3>
-                    <div class="service-items">
-                        <div class="service-item">AI工具應用培訓</div>
-                        <div class="service-item">機器學習基礎</div>
-                        <div class="service-item">智能辦公解決方案</div>
-                        <div class="service-item">AI職場應用</div>
-                    </div>
+                <div class="service-card">
+                    <h3>人工智慧</h3>
                 </div>
-                <div class="services-category">
-                    <h3 class="category-title">情緒壓力</h3>
-                    <div class="service-items">
-                        <div class="service-item">壓力管理工作坊</div>
-                        <div class="service-item">情緒調節技巧</div>
-                        <div class="service-item">正念冥想練習</div>
-                        <div class="service-item">心理韌性建構</div>
-                    </div>
+                <div class="service-card">
+                    <h3>情緒壓力</h3>
                 </div>
-                <div class="services-category">
-                    <h3 class="category-title">自然療癒</h3>
-                    <div class="service-items">
-                        <div class="service-item">森林浴體驗</div>
-                        <div class="service-item">園藝治療</div>
-                        <div class="service-item">自然音療</div>
-                        <div class="service-item">戶外療癒活動</div>
-                    </div>
+                <div class="service-card">
+                    <h3>自然療癒</h3>
                 </div>
-                <div class="services-category">
-                    <h3 class="category-title">永續發展</h3>
-                    <div class="service-items">
-                        <div class="service-item">ESG實務應用</div>
-                        <div class="service-item">綠色職場設計</div>
-                        <div class="service-item">循環經濟思維</div>
-                        <div class="service-item">永續生活實踐</div>
-                    </div>
+                <div class="service-card">
+                    <h3>永續發展</h3>
                 </div>
-                <div class="services-category">
-                    <h3 class="category-title">跨界整合</h3>
-                    <div class="service-items">
-                        <div class="service-item">跨領域專案管理</div>
-                        <div class="service-item">創新思維培養</div>
-                        <div class="service-item">多元技能整合</div>
-                        <div class="service-item">系統性思考訓練</div>
-                    </div>
-                </div>
-                <div class="services-category">
-                    <h3 class="category-title">職涯諮詢</h3>
-                    <div class="service-items">
-                        <div class="service-item">個人職涯規劃</div>
-                        <div class="service-item">轉職輔導服務</div>
-                        <div class="service-item">履歷面試指導</div>
-                        <div class="service-item">職場適應支持</div>
-                    </div>
-                </div>
-                <div class="services-category">
-                    <h3 class="category-title">工作坊</h3>
-                    <div class="service-items">
-                        <div class="service-item">主題式深度學習</div>
-                        <div class="service-item">實作體驗活動</div>
-                        <div class="service-item">小組互動交流</div>
-                        <div class="service-item">專家指導實務</div>
-                    </div>
+                <div class="service-card">
+                    <h3>跨界整合</h3>
                 </div>
             </div>
         </div>
