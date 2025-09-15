@@ -273,6 +273,29 @@
         // Google Apps Script API URL
         const API_URL = 'https://script.google.com/macros/s/AKfycbwWCb5B7FjfF0jeaFiiyv6JB8Ak2gn6uHRgTynyoFzNUT_N3Q8j3KXsHV5XRu7vAgrEsA/exec';
 
+        // JSONP請求函數
+        function makeRequest(url) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+
+                window.callback = function(data) {
+                    document.head.removeChild(script);
+                    delete window.callback;
+                    resolve(data);
+                };
+
+                script.onerror = function() {
+                    document.head.removeChild(script);
+                    delete window.callback;
+                    reject(new Error('請求失敗'));
+                };
+
+                script.src = url;
+                document.head.appendChild(script);
+            });
+        }
+
         // 會員註冊
         document.getElementById('register-form').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -293,21 +316,15 @@
             hideMessage();
 
             try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        action: 'register',
-                        name: name,
-                        email: email,
-                        phone: phone,
-                        password: password
-                    })
+                const params = new URLSearchParams({
+                    action: 'register',
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    password: password
                 });
 
-                const result = await response.json();
+                const result = await makeRequest(API_URL + '?' + params.toString());
 
                 if (result.success) {
                     showMessage('註冊成功！請使用您的帳號登入。', 'success');
@@ -334,19 +351,13 @@
             hideMessage();
 
             try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        action: 'login',
-                        email: email,
-                        password: password
-                    })
+                const params = new URLSearchParams({
+                    action: 'login',
+                    email: email,
+                    password: password
                 });
 
-                const result = await response.json();
+                const result = await makeRequest(API_URL + '?' + params.toString());
 
                 if (result.success) {
                     // 儲存登入狀態
